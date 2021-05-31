@@ -1,0 +1,46 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(12, calc((1440px - (11 * 20px)) / 12));
+  column-gap: 20px;
+
+  box-sizing: border-box;
+  width: 1440px;
+  margin: 0 auto;
+}
+
+.head,
+.promo {
+  display: inherit;
+  grid-template-columns: inherit;
+  column-gap: inherit;
+}
+.head {
+  grid-row: 1;
+}
+.promo {
+  grid-column-start: 2;
+  grid-column-end: 11;
+  grid-row: 2;
+}
+.logo {
+  grid-column-start: 2;
+  grid-column-end: 4;
+}
+
+.contacts {
+  grid-column-start: 9;
+  grid-column-end: 11;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn {
+  display: inline-block;
+  box-sizing: border-box;
+  border: 2px solid #fff;
+
+  font-size: 16px;
+  font-family: sans-serif;
+  line-height: 150%;
+}
