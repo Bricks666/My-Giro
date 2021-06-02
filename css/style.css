@@ -1,46 +1,554 @@
+/*  СТАНДАРТНЫЕ НАСТРОЙКИ */
+/* Сброс ненужных отступов */
+a,
+span,
+ul,
+li,
+input,
+form,
+div,
+header,
+section,
+body,
+h1,
+h2,
+h3,
+p,
+img,
+label {
+  padding: 0;
+  margin: 0;
+}
+/* Удобство с установкой размеров */
+* {
+  box-sizing: border-box;
+}
+/* Некоторая часть стандартных настроек */
+html {
+  font-family: "Yaldevi Colombo", sans-serif;
+  color: #000;
+  scroll-behavior: smooth;
+}
+/* Стандартизированный контейнер */
 .container {
   display: grid;
-  grid-template-columns: repeat(12, calc((1440px - (11 * 20px)) / 12));
+  --one-column: calc((1440px - (11 * 20px)) / 12);
+  grid-template-columns: repeat(12, var(--one-column));
   column-gap: 20px;
 
-  box-sizing: border-box;
   width: 1440px;
   margin: 0 auto;
 }
+/* Задание белеого фона для каждого раздела секции */
+.standart {
+  background-color: #fff;
+}
+/* Задание серого фона для некоторых секций */
+.grey {
+  background-color: #e8e3e3;
+}
+/* Не получается растянуть фон на всю длинну */
+/* .line {
+  background-image: url("../img/icons/vector.svg");
+  background-repeat: repeat-x;
+  background-size: 150% 100%;
+  background-position-x: -35%; 
+} */
+/* Универсальные элементы для кнопки */
+.btn {
+  border: 4px solid;
 
+  display: inline-block;
+  text-align: center;
+  color: #000;
+  text-decoration: none;
+}
+/* Универсальные параметры для загаловков разделов */
+.heading {
+  grid-column-start: 1;
+  grid-row: 1;
+  margin-bottom: 90px;
+
+  padding-left: calc(var(--one-column) + 20px);
+  padding-top: 34px;
+  padding-bottom: 16px;
+
+  color: #fff;
+  font-size: 48px;
+  line-height: 150%;
+  letter-spacing: 0.15em;
+  font-weight: 700;
+}
+/* Фоны для загаловков */
+.blue {
+  background-color: #33359e;
+}
+.orange {
+  background-color: #e3852f;
+}
+/* ПОстановка отступов между разделами */
+header,
+section:not(:last-child) {
+  margin-bottom: 120px;
+}
+
+/* ШАПКА */
+/* ФОн шапки */
+.header {
+  background: #000 url("../img/picture/гироскутер_5.jpg") no-repeat;
+  background-size: 100% 100%;
+}
+/* Классы-прослойки для шапки */
 .head,
 .promo {
   display: inherit;
   grid-template-columns: inherit;
   column-gap: inherit;
+
+  color: #fff;
 }
+/* Распределение места и расположение блоков шапки */
 .head {
   grid-row: 1;
+  padding-top: 16px;
+  margin-bottom: 84px;
+
+  font-size: 22px;
+  line-height: 150%;
+  letter-spacing: 0.15em;
 }
 .promo {
-  grid-column-start: 2;
-  grid-column-end: 11;
   grid-row: 2;
+  row-gap: 125px;
+  margin-bottom: 236px;
 }
+/* Логотип */
 .logo {
   grid-column-start: 2;
   grid-column-end: 4;
-}
 
+  height: 36px;
+  width: 200px;
+}
+/* Блок с телефоном и кнопкой позвонить */
 .contacts {
-  grid-column-start: 9;
-  grid-column-end: 11;
+  grid-column-start: 8;
+  grid-column-end: 12;
 
   display: flex;
   justify-content: space-between;
 }
+/* Номер телефона */
+.phone {
+  color: #fff;
+  text-decoration: none;
+}
+/* Кнопка звонка */
+.btn-call {
+  color: #fff;
+  border: none;
+}
+/* Изменение кнопки при наведение */
+.btn-call:hover,
+.phone:hover {
+  text-decoration: underline;
+}
+/* Главный  слоган шапки*/
+.syte-name {
+  grid-column-start: 3;
+  grid-column-end: 11;
+  grid-row: 1;
 
-.btn {
-  display: inline-block;
-  box-sizing: border-box;
-  border: 2px solid #fff;
+  font-size: 64px;
+  line-height: 200%;
+  letter-spacing: 0.15em;
+  font-weight: 700;
+}
+/* Подслоган */
+.slogan {
+  grid-column-start: 4;
+  grid-column-end: 11;
+  grid-row: 2;
+
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 150%;
+  letter-spacing: 0.15em;
+  text-align: right;
+}
+/* Еще одна кнопка для звонка */
+.btn-main-call {
+  grid-column-start: 3;
+  grid-column-end: 7;
+  grid-row: 3;
+
+  border-color: #fff;
+
+  color: #fff;
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 150%;
+  letter-spacing: 0.1em;
+
+  width: 418px;
+  height: 80px;
+  padding: 13px 12px;
+}
+.btn-main-call:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+/* РАЗДЕЛ О ТОВАРАХ */
+/* Установление длинны загаловка */
+.about-device .heading {
+  grid-column-end: 9;
+}
+/* Позиционирование и распределение места в контенере с контентом 
+(текст о гироскутере, сигвее или самокате + фото) */
+.item {
+  grid-column-start: 2;
+  grid-column-end: 12;
+  margin-bottom: 100px;
+
+  display: grid;
+  grid-template-areas:
+    "name name name name name name name name name name "
+    "desc desc desc desc desc desc . photo photo photo";
+  grid-template-columns: repeat(10, var(--one-column));
+  column-gap: 20px;
+  row-gap: 12px;
+  align-items: center;
+}
+/* Название блока */
+.item-name {
+  grid-area: name;
+
+  font-size: 26px;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 250%;
+}
+/* Его содержание */
+.item-description {
+  margin-left: 26px;
+  position: relative;
+
+  grid-area: desc;
 
   font-size: 16px;
-  font-family: sans-serif;
+  line-height: 250%;
+  letter-spacing: 0.15em;
+  text-align: justify;
+  list-style: none;
+}
+/* Добавление декоратичных точек к списку */
+.item-description li::before {
+  content: "\2022";
+  font-size: 26px;
+
+  position: absolute;
+  left: -14px;
+
+  display: inline-block;
+
+  border-radius: 50%;
+}
+/* Фото для блока */
+.item-photo {
+  grid-area: photo;
+
+  width: 345px;
+}
+/* Изменение расстановки в блоке для равнения по правую сторону */
+.item.right {
+  grid-template-areas:
+    "name name name name name name name name name name "
+    "photo photo photo . desc desc desc desc desc desc";
+}
+/* Равнение текста в блоке по сторону раснения блока */
+.item.right .item-name {
+  text-align: right;
+}
+.item.right .item-description {
+  margin-left: 0;
+  margin-right: 26px;
+}
+/* Разворот картинки по Х-оси на 180 */
+.item.right .item-photo {
+  transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+
+/* КАТАЛОГ */
+/* Указание длинны загаловка */
+.catalog .heading {
+  grid-column-end: 7;
+}
+/* Скрытие input'ов */
+.filter {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: 0;
+}
+/* Список фильтров */
+.filters-list {
+  grid-row: 1;
+  grid-column-start: 2;
+  grid-column-end: 12;
+  margin-bottom: 40px;
+
+  display: flex;
+  flex-wrap: wrap;
+}
+/* Положение элементов фильтра */
+.filter-product {
+  margin-right: 39px;
+
+  list-style: none;
+}
+/* Текстовая составляющая пунктов фильтров */
+.filter-product label {
+  font-size: 26px;
   line-height: 150%;
+  letter-spacing: 0.15em;
+  font-weight: 700;
+  cursor: pointer;
+}
+/* Чтобы не было отступа у порследнего элементе  */
+.filter-product:last-child {
+  margin: 0;
+}
+/* Декоративная часть фильтров */
+#all:checked ~ .filters-list .filter-product label[for="all"],
+#gyro:checked ~ .filters-list .filter-product label[for="gyro"],
+#segway:checked ~ .filters-list .filter-product label[for="segway"],
+#electr:checked ~ .filters-list .filter-product label[for="electr"] {
+  text-decoration: underline;
+}
+/* Список представленных продуктов */
+.products {
+  grid-row: 2;
+  grid-column-start: 2;
+  grid-column-end: 12;
+
+  display: grid;
+  row-gap: 20px;
+}
+/* Блок с продуктом */
+.product {
+  margin-left: 26px;
+
+  display: grid;
+  /* Рассчеты ширины колонок и строк по макету */
+  --one-product-column: calc((1170px - (20px * 11)) / 12);
+  --one-product-row: calc((350px - (10px * 4)) / 5);
+  grid-template-columns: repeat(12, var(--one-product-column));
+  /* Серединный контент для тянущегося описания */
+  grid-template-rows: var(--one-product-row) max-content repeat(
+      2,
+      var(--one-product-row)
+    );
+  grid-template-areas:
+    "photo photo photo photo name name name name name coast coast ."
+    "photo photo photo photo desc desc desc desc desc . . ."
+    "photo photo photo photo chst chst chst chst . buy buy ."
+    "photo photo photo photo chst chst chst chst . . . .";
+  column-gap: 20px;
+  row-gap: 10px;
+
+  border: 2px solid rgba(0, 0, 0, 0.5);
+}
+/* Название товара */
+.product-name {
+  grid-area: name;
+  align-self: end;
+  margin-left: 19px;
+
+  font-size: 22px;
+  line-height: 250%;
+  letter-spacing: 0.15em;
+  font-weight: 700;
+  color: #e3852f;
+}
+/* Фото товара */
+.product-photo {
+  margin-left: 60px;
+  grid-area: photo;
+  align-self: center;
+
+  height: auto;
+  width: 317px;
+}
+/* Текст описания */
+.product-description {
+  grid-area: desc;
+  margin-left: 19px;
+
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: 0.15em;
+  text-align: left;
+}
+/* Цена */
+.product-coast {
+  align-self: end;
+  justify-self: end;
+  grid-area: coast;
+
+  font-size: 22px;
+  line-height: 150%;
+  letter-spacing: 0.15em;
+  font-weight: 700;
+}
+/* Доведение кнопки покупки до макета */
+.btn-buy {
+  align-self: end;
+  grid-area: buy;
+
+  font-size: 18px;
+  line-height: 150%;
+  letter-spacing: 0.15em;
+  font-weight: 700;
+  padding: 4px 0;
+
+  border-color: #e3852f;
+
+  transition-property: background-color color;
+  transition-delay: 0.15s;
+  transition-timing-function: ease-out;
+  transition-duration: 0.25s;
+}
+.btn-buy:hover {
+  background-color: #e3852f;
+  color: #fff;
+}
+/* Список кратких характеристик */
+.main-charasts {
+  align-self: center;
+  grid-area: chst;
+  margin-left: 19px;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  row-gap: 11px;
+  justify-content: space-between;
+}
+/* Элементы списка */
+.charast {
+  list-style: none;
+  font-size: 13px;
+  line-height: 150%;
+  letter-spacing: 0.15em;
+}
+/* Не уверен по дизайну такому */
+.charast:nth-child(even) {
+  justify-self: end;
+}
+
+/* Техническая часть фильтров */
+#gyro:checked ~ .products .product:not([data-category~="gyro"]),
+#segway:checked ~ .products .product:not([data-category~="segway"]),
+#electr:checked ~ .products .product:not([data-category~="electr"]) {
+  display: none;
+}
+
+/* НАШИ ПЛЮСЫ */
+.our-pluses .heading {
+  grid-column-end: 6;
+}
+.slayder {
+  display: none;
+  opacity: 0;
+  z-index: 0;
+  position: absolute;
+  top: -99999999;
+  left: -99999999;
+}
+.slaydes-container {
+  grid-column-start: 2;
+  grid-column-end: 12;
+  position: relative;
+  margin-bottom: 30px;
+
+  height: 400px;
+
+  border: 2px solid rgba(0, 0, 0, 0.25);
+}
+.slayd {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+
+  padding-top: 38px;
+
+  opacity: 0;
+  z-index: 0;
+
+  transition-property: opacity;
+  transition-duration: 0.25s;
+  transition-timing-function: ease-out;
+  transition-delay: 0.25s;
+}
+#slayd-1:checked ~ .slaydes-container .slayd:nth-of-type(1),
+#slayd-2:checked ~ .slaydes-container .slayd:nth-of-type(2),
+#slayd-3:checked ~ .slaydes-container .slayd:nth-of-type(3),
+#slayd-4:checked ~ .slaydes-container .slayd:nth-of-type(4),
+#slayd-5:checked ~ .slaydes-container .slayd:nth-of-type(5) {
+  opacity: 1;
+  z-index: 1;
+}
+.slayd-heading {
+  font-size: 26px;
+  line-height: 150%;
+  letter-spacing: 0.15em;
+  font-weight: 700;
+  text-decoration: underline;
+
+  margin-bottom: 48px;
+}
+.plus-description {
+  width: 588px;
+
+  font-size: 18px;
+  line-height: 200%;
+  letter-spacing: 0.15em;
+  text-align: center;
+}
+.dots-container {
+  grid-column-start: 6;
+  grid-column-end: 8;
+
+  display: flex;
+  justify-content: space-between;
+}
+.dots-container label::before {
+  content: "";
+
+  display: inline-block;
+
+  width: 24px;
+  height: 24px;
+
+  border-radius: 50%;
+  border: 2px solid #000;
+  background-size: 20px 20px;
+  background-position: center center;
+  background-repeat: no-repeat;
+
+  cursor: pointer;
+}
+#slayd-1:checked ~ .dots-container label:nth-of-type(1)::before,
+#slayd-2:checked ~ .dots-container label:nth-of-type(2)::before,
+#slayd-3:checked ~ .dots-container label:nth-of-type(3)::before,
+#slayd-4:checked ~ .dots-container label:nth-of-type(4)::before,
+#slayd-5:checked ~ .dots-container label:nth-of-type(5)::before {
+  background-image: url("../img/icons/black-circle.svg");
 }
