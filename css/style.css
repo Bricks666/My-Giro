@@ -91,7 +91,7 @@ body {
 }
 /* ПОстановка отступов между разделами */
 header,
-section:not(:last-child) {
+section {
   margin-bottom: 120px;
 }
 
@@ -567,9 +567,11 @@ section:not(:last-child) {
 }
 
 /* КОНСУЛЬТАНТЫ */
+/* ЗАгаловок раздела */
 .consultants .heading {
   grid-column-end: 8;
 }
+/* Контейнер со списком консультантов */
 .consultants-container {
   grid-column-start: 2;
   grid-column-end: 12;
@@ -578,30 +580,32 @@ section:not(:last-child) {
   flex-wrap: wrap;
   justify-content: space-between;
 }
+/* Блок с данными о консультанте */
 .consultant {
   display: grid;
   --one-column-cons: calc((385px - (4 * 10px) - (2 * 20px)) / 5);
   --one-row-cons: calc((291px - (4 * 20px) - (2 * 20px)) / 5);
   grid-template-columns: repeat(5, var(--one-column-cons));
-  grid-template-rows: repeat(5, var(--one-row-cons));
+  grid-template-rows: repeat(3, var(--one-row-cons)) max-content;
   column-gap: 10px;
   row-gap: 20px;
   grid-template-areas:
     "photo photo who who who"
     "photo photo who who who"
     "photo photo who who who"
-    "cont cont cont cont cont"
     "cont cont cont cont cont";
 
   padding: 20px;
 
   border: 2px solid rgba(0, 0, 0, 0.5);
 }
+/* Фото консультанта */
 .consultant-photo {
   grid-area: photo;
   width: 100%;
   height: 100%;
 }
+/* Блок с ФИО и должностью*/
 .who {
   grid-area: who;
 
@@ -610,44 +614,50 @@ section:not(:last-child) {
   justify-content: space-between;
   align-items: stretch;
 }
+/* ФИО */
 .consultant-name {
   font-size: 18px;
   line-height: 150%;
   font-weight: 700;
   letter-spacing: 0.15em;
 }
+/* Должность */
 .consultant-position {
   font-size: 12px;
   line-height: 150%;
   letter-spacing: 0.15em;
   color: rgba(0, 0, 0, 0.75);
 }
+/* Список контактов */
 .contacts-list {
   grid-area: cont;
-  height: 100%;
 
   align-self: center;
 
   display: flex;
   flex-wrap: wrap;
-  align-content: space-around;
 }
+/* Контакт */
 .contact {
   flex-basis: 100%;
-
-  font-size: 15px;
-  line-height: 150%;
-  letter-spacing: 0.15em;
-
-  list-style: none;
+  margin-bottom: 15px;
 
   display: grid;
   grid-template-columns: max-content auto;
   column-gap: 36px;
   align-items: center;
+
+  font-size: 15px;
+  line-height: 150%;
+  letter-spacing: 0.15em;
+  list-style: none;
 }
-.call,
-.write {
+/* Нормализация отступа у последнего элемента */
+.contacts-list .contact:last-child {
+  margin-bottom: 0;
+}
+/* Добавление нужных стилей для кнопки контактирования */
+.btn-cont {
   font-size: 14px;
   line-height: 150%;
   letter-spacing: 0.15em;
@@ -659,52 +669,63 @@ section:not(:last-child) {
   transition-delay: 0.1s;
   transition-duration: 0.1s;
 }
-.call:hover,
-.write:hover {
+.btn-cont:hover {
   background-color: #e3852f;
   color: #fff;
 }
 
-/*  */
+/* БЛОК С ДОПОЛНИТЕЛЬНОЙ ИНФОРМАЦИЕЙ*/
+/* Тут только только продление заголовка,
+  потому что структурно он повторяет блок с информацией о товаре */
 .dop-info .heading {
   grid-column-end: 7;
 }
 
-/*  */
+/* БЛОК С ОФОРМЛЕНИЕМ ПОДПИСКИ */
+/* Продление заголовка */
 .subscribe .heading {
   grid-column-end: 8;
 }
+/* Название подразделов
+(так как основные стилистические параметры одинаковы) */
 .subscribe .item-name {
   margin-bottom: 49px;
   line-height: 150%;
 }
+/* Блок с более подробной информацией о компании */
 .also-about-us {
   grid-column-start: 2;
   grid-column-end: 6;
 }
+/* БЛа-бла-бла о компании */
 .also-about-us .item-description {
   text-align: left;
 }
+/* Контейнер с формой */
 .subscribe-container {
   grid-column-start: 6;
   grid-column-end: 12;
 
   position: relative;
 }
+/* Название формы */
 .subscribe-container .item-name {
   text-align: right;
 }
+/* Форма */
 .subscribe-form {
   display: grid;
   grid-template-columns: repeat(6, var(--one-column));
   column-gap: 20px;
   row-gap: 20px;
 }
+/* Контейнер с полем формы */
 .field-container {
   grid-column: span 3;
 
   height: 68px;
 }
+/* Поле формы */
 .field {
   height: 100%;
   width: 100%;
@@ -717,15 +738,18 @@ section:not(:last-child) {
 
   border: 4px solid #000;
 }
+/* Подсказка в поле */
 .field::placeholder {
   font-size: 14px;
   line-height: 150%;
   letter-spacing: 0.15em;
   color: rgba(0, 0, 0, 0.75);
 }
+/* ДОбавление отступа между кнопкой отправки и полями формы */
 .subscribe-form .field-container:last-of-type {
   margin-bottom: 58px;
 }
+/* Кнопка подписки */
 .btn-sub {
   grid-column-start: 4;
   grid-column-end: 7;
@@ -733,11 +757,11 @@ section:not(:last-child) {
 
   width: 281px;
 
-  border: 4px solid #e3852f;
-
   font-size: 18px;
   line-height: 150%;
   letter-spacing: 0.15em;
+
+  border: 4px solid #e3852f;
 
   padding-top: 8px;
   padding-bottom: 8px;
@@ -752,7 +776,7 @@ section:not(:last-child) {
   color: #fff;
 }
 
-/*  */
+/* Кнопка наверх */
 .btn-top {
   position: absolute;
   right: 0;
@@ -767,7 +791,8 @@ section:not(:last-child) {
   background-size: 50px 80px;
 }
 
-/*  */
+/* ПРЕДСТАВЛЕННЫЕ КОМПАНИИ */
+/* Список представленных компаний */
 .venders-list {
   grid-column-start: 2;
   grid-column-end: 12;
@@ -778,6 +803,7 @@ section:not(:last-child) {
 
   margin: 154px 0;
 }
+/* Компания */
 .venders-list .vender {
   min-width: 130px;
   max-width: 245px;
@@ -786,6 +812,7 @@ section:not(:last-child) {
 
   list-style: none;
 }
+/* Логотип компании */
 .vender img {
   width: 100%;
   height: 100%;
