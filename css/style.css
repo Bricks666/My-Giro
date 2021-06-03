@@ -29,6 +29,9 @@ html {
   color: #000;
   scroll-behavior: smooth;
 }
+body {
+  background-color: #fff;
+}
 /* Стандартизированный контейнер */
 .container {
   display: grid;
@@ -457,9 +460,11 @@ section:not(:last-child) {
 }
 
 /* НАШИ ПЛЮСЫ */
+/* Окончание подписи раздела */
 .our-pluses .heading {
   grid-column-end: 6;
 }
+/* Сокрытие inputo'ов */
 .slayder {
   display: none;
   opacity: 0;
@@ -468,6 +473,7 @@ section:not(:last-child) {
   top: -99999999;
   left: -99999999;
 }
+/* Контейнер со слайдами */
 .slaydes-container {
   grid-column-start: 2;
   grid-column-end: 12;
@@ -478,6 +484,7 @@ section:not(:last-child) {
 
   border: 2px solid rgba(0, 0, 0, 0.25);
 }
+/* Сокрытые слайды */
 .slayd {
   display: flex;
   align-items: center;
@@ -497,6 +504,7 @@ section:not(:last-child) {
   transition-timing-function: ease-out;
   transition-delay: 0.25s;
 }
+/* Появление слайдов */
 #slayd-1:checked ~ .slaydes-container .slayd:nth-of-type(1),
 #slayd-2:checked ~ .slaydes-container .slayd:nth-of-type(2),
 #slayd-3:checked ~ .slaydes-container .slayd:nth-of-type(3),
@@ -505,6 +513,7 @@ section:not(:last-child) {
   opacity: 1;
   z-index: 1;
 }
+/* Название плюса */
 .slayd-heading {
   font-size: 26px;
   line-height: 150%;
@@ -514,6 +523,7 @@ section:not(:last-child) {
 
   margin-bottom: 48px;
 }
+/* Описание плюса */
 .plus-description {
   width: 588px;
 
@@ -522,6 +532,7 @@ section:not(:last-child) {
   letter-spacing: 0.15em;
   text-align: center;
 }
+/* Контейнер с переключателями */
 .dots-container {
   grid-column-start: 6;
   grid-column-end: 8;
@@ -529,6 +540,7 @@ section:not(:last-child) {
   display: flex;
   justify-content: space-between;
 }
+/* Точки */
 .dots-container label::before {
   content: "";
 
@@ -545,10 +557,236 @@ section:not(:last-child) {
 
   cursor: pointer;
 }
+/* Закрашивание точек, при выборе */
 #slayd-1:checked ~ .dots-container label:nth-of-type(1)::before,
 #slayd-2:checked ~ .dots-container label:nth-of-type(2)::before,
 #slayd-3:checked ~ .dots-container label:nth-of-type(3)::before,
 #slayd-4:checked ~ .dots-container label:nth-of-type(4)::before,
 #slayd-5:checked ~ .dots-container label:nth-of-type(5)::before {
   background-image: url("../img/icons/black-circle.svg");
+}
+
+/* КОНСУЛЬТАНТЫ */
+.consultants .heading {
+  grid-column-end: 8;
+}
+.consultants-container {
+  grid-column-start: 2;
+  grid-column-end: 12;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.consultant {
+  display: grid;
+  --one-column-cons: calc((385px - (4 * 10px) - (2 * 20px)) / 5);
+  --one-row-cons: calc((291px - (4 * 20px) - (2 * 20px)) / 5);
+  grid-template-columns: repeat(5, var(--one-column-cons));
+  grid-template-rows: repeat(5, var(--one-row-cons));
+  column-gap: 10px;
+  row-gap: 20px;
+  grid-template-areas:
+    "photo photo who who who"
+    "photo photo who who who"
+    "photo photo who who who"
+    "cont cont cont cont cont"
+    "cont cont cont cont cont";
+
+  padding: 20px;
+
+  border: 2px solid rgba(0, 0, 0, 0.5);
+}
+.consultant-photo {
+  grid-area: photo;
+  width: 100%;
+  height: 100%;
+}
+.who {
+  grid-area: who;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+}
+.consultant-name {
+  font-size: 18px;
+  line-height: 150%;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+}
+.consultant-position {
+  font-size: 12px;
+  line-height: 150%;
+  letter-spacing: 0.15em;
+  color: rgba(0, 0, 0, 0.75);
+}
+.contacts-list {
+  grid-area: cont;
+  height: 100%;
+
+  align-self: center;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-around;
+}
+.contact {
+  flex-basis: 100%;
+
+  font-size: 15px;
+  line-height: 150%;
+  letter-spacing: 0.15em;
+
+  list-style: none;
+
+  display: grid;
+  grid-template-columns: max-content auto;
+  column-gap: 36px;
+  align-items: center;
+}
+.call,
+.write {
+  font-size: 14px;
+  line-height: 150%;
+  letter-spacing: 0.15em;
+
+  border: 4px solid #e3852f;
+
+  transition-property: background-color, color;
+  transition-timing-function: ease-out;
+  transition-delay: 0.1s;
+  transition-duration: 0.1s;
+}
+.call:hover,
+.write:hover {
+  background-color: #e3852f;
+  color: #fff;
+}
+
+/*  */
+.dop-info .heading {
+  grid-column-end: 7;
+}
+
+/*  */
+.subscribe .heading {
+  grid-column-end: 8;
+}
+.subscribe .item-name {
+  margin-bottom: 49px;
+  line-height: 150%;
+}
+.also-about-us {
+  grid-column-start: 2;
+  grid-column-end: 6;
+}
+.also-about-us .item-description {
+  text-align: left;
+}
+.subscribe-container {
+  grid-column-start: 6;
+  grid-column-end: 12;
+
+  position: relative;
+}
+.subscribe-container .item-name {
+  text-align: right;
+}
+.subscribe-form {
+  display: grid;
+  grid-template-columns: repeat(6, var(--one-column));
+  column-gap: 20px;
+  row-gap: 20px;
+}
+.field-container {
+  grid-column: span 3;
+
+  height: 68px;
+}
+.field {
+  height: 100%;
+  width: 100%;
+
+  padding-left: 20px;
+
+  font-size: 14px;
+  line-height: 150%;
+  letter-spacing: 0.15em;
+
+  border: 4px solid #000;
+}
+.field::placeholder {
+  font-size: 14px;
+  line-height: 150%;
+  letter-spacing: 0.15em;
+  color: rgba(0, 0, 0, 0.75);
+}
+.subscribe-form .field-container:last-of-type {
+  margin-bottom: 58px;
+}
+.btn-sub {
+  grid-column-start: 4;
+  grid-column-end: 7;
+  justify-self: end;
+
+  width: 281px;
+
+  border: 4px solid #e3852f;
+
+  font-size: 18px;
+  line-height: 150%;
+  letter-spacing: 0.15em;
+
+  padding-top: 8px;
+  padding-bottom: 8px;
+
+  transition-property: background-color, color;
+  transition-timing-function: ease-out;
+  transition-delay: 0.1s;
+  transition-duration: 0.1s;
+}
+.btn-sub:hover {
+  background-color: #e3852f;
+  color: #fff;
+}
+
+/*  */
+.btn-top {
+  position: absolute;
+  right: 0;
+  bottom: -74px;
+
+  width: 101px;
+  height: 101px;
+
+  background-image: url("../img/icons/arrow-top.svg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 50px 80px;
+}
+
+/*  */
+.venders-list {
+  grid-column-start: 2;
+  grid-column-end: 12;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  margin: 154px 0;
+}
+.venders-list .vender {
+  min-width: 130px;
+  max-width: 245px;
+
+  height: 128px;
+
+  list-style: none;
+}
+.vender img {
+  width: 100%;
+  height: 100%;
 }
