@@ -805,15 +805,11 @@ section {
 }
 /* Компания */
 .venders-list .vender {
-  min-width: 130px;
-  max-width: 245px;
-
-  height: 128px;
-
   list-style: none;
 }
 /* Логотип компании */
 .vender img {
-  width: 100%;
-  height: 100%;
+  width: auto;
+  max-width: 245px;
+  height: 128px;
 }
