@@ -3,25 +3,16 @@
   font-style: normal;
   font-weight: 400;
   src: local("Yaldevi Colombo Regular");
-  src: url("../fonts/eot/YaldeviColombo-Regular.eot")
-    format("embedded-opentype");
-  src: url("../fonts/eot/YaldeviColombo-Regular.eot?#iefix")
-      format("embedded-opentype"),
+  src:
     url("../fonts/woff2/YaldeviColombo-Regular.woff2") format("woff2"),
     url("../fonts/YaldeviColombo-Regular.woff") format("woff"),
-    url("../fonts/ttf/YaldeviColombo-Regular.ttf") format("truetype"),
-    url("../fonts/svg/YaldeviColombo-Regular.svg#svgFontName") format("svg");
 }
 @font-face {
   font-family: "Yaldevi Colombo";
   font-style: normal;
   font-weight: 700;
   src: local("Yaldevi Colombo Bold");
-  src: url("../fonts/eot/YaldeviColombo-Bold.eot") format("embedded-opentype");
-  src: url("../fonts/eot/YaldeviColombo-Bold.eot?#iefix")
-      format("embedded-opentype"),
+  src:
     url("../fonts/woff2/YaldeviColombo-Bold.woff2") format("woff2"),
     url("../fonts/YaldeviColombo-Bold.woff") format("woff"),
-    url("../fonts/ttf/YaldeviColombo-Bold.ttf") format("truetype"),
-    url("../fonts/svg/YaldeviColombo-Bold.svg#svgFontName") format("svg");
 }
